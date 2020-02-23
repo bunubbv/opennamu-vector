@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+	<html>
+	<!-- accesskey 미구현 -->
+		<head>
+			<meta charset="utf-8">
+			{% if imp[3][0] != 0 %}
+				<title>{{imp[0]}}{{imp[3][0]}} - {{imp[1][0]}}</title>
+			{% else %}
+				<title>{{imp[0]}} - {{imp[1][0]}}</title>
+			{% endif %}
+			{{imp[3][3]|safe}}
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" href="/views/vector/css/bootstrap.min.css?71a3464b">
+			<link rel="stylesheet" href="/views/vector/css/jquery-ui.min.css?0b5729a9">
+			<link rel="stylesheet" href="/views/vector/css/layout.css?5f17dce9">
+			<script type="text/javascript" src="/views/vector/js/jquery.min.js?c9f5aeec"></script>
+			<script type="text/javascript" src="/views/vector/js/jquery-ui.min.js?c15b1008"></script>
+			<script type="text/javascript" src="/views/vector/js/tether.min.js?1c4a5999"></script>
+			<script type="text/javascript" src="/views/vector/js/bootstrap.min.js?0827a0bd"></script>
+			<script type="text/javascript" src="/views/vector/js/collapsibleTabs.js?0c860ef7"></script>
+			<script type="text/javascript" src="/views/vector/js/vector.js?d1e684ec"></script>
+			{{imp[1][5]|safe}}
+			{{imp[2][3]|safe}}
+			<meta name="title" content="{{imp[0]}} - {{imp[1][0]}}">
+			<meta name="keywords" content="{{imp[1][0]}}">
+			<meta name="description" content="{{data|cut_100}}">
+			<meta property="og:type" content="website"> 
+			<meta property="og:title" content="{{imp[0]}} - {{imp[1][0]}}">
+			<meta property="og:description" content="{{data|cut_100}}">
+		</head>
+		<body class="vector">
+			<div id="mw-page-base" class="noprint"></div>
+			<div id="mw-head-base" class="noprint"></div>
+			<div id="content" class="mw-body" role="main">
+				<a id="top"></a>
+				<div class="mw-indicators mw-body-content"></div>
+				<h1 id="firstHeading" class="firstHeading" lang="ko">{{imp[0]}}</h1>
+				<div id="bodyContent" class="mw-body-content">
+					<div id="siteSub" class="noprint"></div>
+					<div id="contentSub">
+					</div>
+					{% if imp[2][11] == 1 %}
+					<div class="usermessage theseed-user-document-discuss-alert">현재 진행중인
+						<a href="/topic/{{imp[2][5]}}">사용자 토론</a>이 있습니다.</div>
+					{% endif %}
+					<div id="mw-content-text" class="mw-content-ltr wiki-article" dir="ltr">
+						{{data|safe}}
+					</div>
+					<div class="visualClear"></div>
+				</div>
+			</div>
+			<div id="mw-navigation">
+				<h2>둘러보기 메뉴</h2>
+				<div id="mw-head">
+					<div id="p-personal" role="navigation" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">개인 도구</h3>
+						<ul>
+							{% if imp[2][2] == 1 %}
+							<li id="pt-userpage">
+								<a href="/w/{{imp[2][10]}}" title="내 사용자 문서" accesskey=".">{{imp[2][10]}}</a>
+							</li>
+							<li id="pt-mytalk">
+								<a href="/discuss/{{imp[2][10]}}" title="내 토론" accesskey="n">토론</a>
+							</li>
+							<li id="pt-preferences">
+								<a href="/change" title="계정설정">계정 설정</a>
+							</li>
+							<li id="pt-mycontris">
+								<a href="/record/{{imp[2][10]}}" title="내 기여 목록 accesskey="y">기여</a>
+							</li>
+							<li id="pt-watchlist">
+								<a href="/member/starred_documents" title="주시문서 목록" accesskey="l">주시문서 목록</a>
+							</li>
+							<li id="pt-logout">
+								<a href="/logout" title="로그아웃">로그아웃</a>
+							</li>
+							{% else %}
+							<li id="pt-anonuserpage">로그인하지 않음</li>
+							<li id="pt-anoncontribs">
+								<a href="/record/{{imp[2][10]}}" title="이 IP 주소의 편집 목록" accesskey="y">기여</a>
+							</li>
+							<li id="pt-createaccount">
+								<a href="/register" title="계정을 만들고 로그인하는 것이 좋습니다; 하지만, 필수는 아닙니다">계정 만들기</a>
+							</li>
+							<li id="pt-login">
+								<a href="/login" title="{{imp[1][0]}}에 로그인하면 여러가지 편리한 기능을 사용할 수 있습니다." accesskey="o">로그인</a>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+					<div id="left-navigation">
+						<div id="p-namespaces" class="vectorTabs" role="navigation" aria-labelledby="p-personal-label">
+							<h3 id="p-namespaces-label">이름공간</h3>
+							<ul>
+								{% if imp[3][4] != '' %}
+								{% if imp[3][0] == 0 %}
+								<li class="selected">
+									<span>
+										<a href="/w/{{imp[0]}}">문서</a>
+									</span>
+								</li>
+								{% else %}
+								<li>
+									<span>
+										<a href="/w/{{imp[0]}}">문서</a>
+									</span>
+								</li>								
+								{% endif %}
+								{% if imp[3][0] == '(토론)' %}
+								<li class="selected">
+									<span>
+										<a href="/discuss/{{imp[0]}}">토론</a>
+									</span>
+								</li>
+								{% else %}
+								<li>
+									<span>
+										<a href="/discuss/{{imp[0]}}">토론</a>
+									</span>
+								</li>
+								{% endif %}
+								{% else %}
+								<li>
+									<span>
+										<a href="{{imp[0]}}">특수 문서</a>
+									</span>
+								</li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+					<div id="right-navigation">
+						{% if imp[3][4] != '' %}
+						<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+							<h3 id="p-views-label">보기</h3>
+							<ul>
+								{% if imp[3][0] == 0 %}
+								<li id="ca-view" class="collapsible selected">
+									<span>
+										<a href="/w/{{imp[0]}}">읽기</a>
+									</span>
+								</li>
+								{% else %}
+								<li id="ca-view" class="collapsible">
+									<span>
+										<a href="/w/{{imp[0]}}">읽기</a>
+									</span>
+								</li>
+								{% endif %}
+								{% if imp[3][0] == '(편집)' %}
+								<li id="ca-edit" class="collapsible selected">
+									<span>
+										<a href="/edit/{{imp[0]}}" title="이 문서 편집하기">편집</a>
+									</span>
+								</li>
+								{% else %}
+								<li id="ca-edit" class="collapsible">
+									<span>
+										<a href="/edit/{{imp[0]}}" title="이 문서 편집하기">편집</a>
+									</span>
+								</li>
+								{% endif %}
+								{% if imp[3][0] == '(역사)' %}
+								<li id="ca-history" class="collapsible selected">
+									<span>
+										<a href="/history/{{imp[0]}}" title="이 문서의 과거 편집 내역입니다. [Alt+Shift+h]" accesskey="h">역사 보기</a>
+									</span>
+								</li>
+								{% else %}
+								<li id="ca-history" class="collapsible">
+									<span>
+										<a href="/history/{{imp[0]}}" title="이 문서의 과거 편집 내역입니다. [Alt+Shift+h]" accesskey="h">역사 보기</a>
+									</span>
+								</li>
+								{% endif %}
+								<!-- 귀찮아서 미구현 -->
+								<!--if star_count >= 0
+								<li id="ca-if starred un endif watch" class="collapsible icon mw-watchlink">
+									<span>
+										<a href="/member/if starred un endif star/" data-mw="interface" title="이 문서를 주시문서 목록에 추가 [Alt+Shift+w] (star_count명이 주시중)" accesskey="w">주시if starred 해제endif</a>
+									</span>
+								</li>
+								endif-->
+								<span class="placeholder" style="display: none;"></span>
+								<span class="placeholder" style="display: none;"></span>
+							</ul>
+						</div>
+						<div id="p-cactions" role="navigation" class="vectorMenu" aria-labelledby="p-cactions-label">
+							<h3 id="p-cactions-label" tabindex="0" style="width: 74px;">
+								<span>더 보기</span>
+							</h3>
+							<div class="menu">
+								<ul>
+									<li class="collapsible" style="display: list-item;">
+										<span>
+											<a href="/delete/{{imp[0]}}" title="이 문서를 삭제합니다.">삭제</a>
+										</span>
+									</li>
+									<li class="collapsible" style="display: list-item;">
+										<span>
+											<a href="/move/{{imp[0]}}" title="이 문서를 이동합니다.">이동</a>
+										</span>
+									</li>
+									<li class="collapsible" style="display: list-item;">
+										<span>
+											<a href="/acl/{{imp[0]}}" title="ACL을 봅니다.">ACL</a>
+										</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+						{% endif %}
+						<div id="p-search" role="search">
+							<h3>
+								<label for="searchInput">검색</label>
+							</h3>
+							<form id="searchform">
+								<div id="simpleSearch">
+									<input name="search" placeholder="{{imp[1][0]}} 검색" title="{{imp[1][0]}} 검색 [Alt+Shift+f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"
+										type="search">
+									<input name="go" value="보기" title="이 이름의 문서가 존재하면 그 문서로 바로 가기" id="searchButton" class="searchButton" type="submit"> </div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div id="mw-panel">
+					<div id="p-logo" role="banner">
+						<a class="mw-wiki-logo" href="/" title="대문으로 가기">{{imp[1][4]|safe}}</a>
+					</div>
+					<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+						<h3 id="p-navigation-label">둘러보기</h3>
+						<div class="body">
+							<ul>
+								<li>
+									<a href="/" title="대문으로 가기" accesskey="z">대문</a>
+								</li>
+								<li>
+									<a href="/recent_changes" title="위키의 최근 바뀐 목록">최근 바뀜</a>
+								</li>
+								<li>
+									<a href="/recent_discuss" title="위키의 최근 토론 목록">최근 토론</a>
+								</li>
+								<li>
+									<a href="/random" title="임의 문서 불러오기">임의 문서로</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+						<h3 id="p-tb-label">도구</h3>
+						<div class="body">
+							<ul>
+								<li>
+									<a href="/xref/{{imp[0]}}" title="여기를 가리키는 모든 위키 문서의 목록 [Alt+Shift+j]" accesskey="j">여기를 가리키는 문서</a>
+								</li>
+								<!--{% if user %}
+								<li>
+									<a href="/contribution/author//document" title="이 사용자의 기여 목록">사용자 기여</a>
+								</li>
+								{% endif %}-->
+								<li>
+									<a href="/admin_list" title="관리자 목록" accesskey="u">관리자 목록</a>
+								</li>
+								<li>
+									<a href="/not_close_topic" title="열린 토론 목록" accesskey="u">열린 토론 목록</a>
+								</li>
+								<li>
+									<a href="/title_index" title="모든 문서 목록" accesskey="u">모든 문서 목록</a>
+								</li>
+								<li>
+									<a href="/acl_list" title="ACL 문서 목록" accesskey="u">ACL 문서 목록</a>
+								</li>
+								<li>
+									<a href="/please" title="필요한 문서들" accesskey="u">필요한 문서들</a>
+								</li>
+								<li>
+									<a href="/block_log" title="최근 차단" accesskey="u">최근 차단</a>
+								</li>
+								<li>
+									<a href="/user_log" title="사용자 목록" accesskey="u">사용자 목록</a>
+								</li>
+								<li>
+									<a href="/admin_log" title="권한 사용 목록" accesskey="u">권한 사용 목록</a>
+								</li>
+								<li>
+									<a href="/old_page" title="오래된 문서" accesskey="u">오래된 문서</a>
+								</li>
+								<li>
+									<a href="/upload" title="파일 올리기" accesskey="u">파일 올리기</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="footer" role="contentinfo">
+					{% if imp[3][4] != '' %}
+					<ul id="footer-info">
+						<li id="footer-info-lastmod">이 문서는 {{imp[3][1]}}에 마지막으로 편집되었습니다.</li>
+						<li id="footer-info-copyright">{{imp[1][1]|safe}}</li>
+					</ul>
+					{% endif %}
+					<ul id="footer-places">
+						<li>
+							<a href="https://github.com/2du/openNAMU/blob/master/LICENSE" class="extiw">엔진 라이선스</a>
+						</li>
+					</ul>
+					<ul id="footer-icons" class="noprint">
+						<li id="footer-poweredbyico">
+							<a href="//github.com/2du/openNAMU">openNAMU</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</body>
+	</html>
