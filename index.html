@@ -57,10 +57,10 @@
 						<ul>
 							{% if imp[2][2] == 1 %}
 							<li id="pt-userpage">
-								<a href="/w/{{imp[2][10]}}" title="내 사용자 문서" accesskey=".">{{imp[2][10]}}</a>
+								<a href="/w/사용자:{{imp[2][10]}}" title="내 사용자 문서" accesskey=".">{{imp[2][10]}}</a>
 							</li>
 							<li id="pt-mytalk">
-								<a href="/discuss/{{imp[2][10]}}" title="내 토론" accesskey="n">토론</a>
+								<a href="/topic/사용자:{{imp[2][10]}}" title="내 토론" accesskey="n">토론</a>
 							</li>
 							<li id="pt-preferences">
 								<a href="/change" title="계정설정">계정 설정</a>
@@ -92,13 +92,52 @@
 						<div id="p-namespaces" class="vectorTabs" role="navigation" aria-labelledby="p-personal-label">
 							<h3 id="p-namespaces-label">이름공간</h3>
 							<ul>
-								{% if imp[3][4] != '' %}
-								{% if imp[3][0] == 0 %}
+								{% if imp[3][4] == '' and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (편집)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}
+								<li>
+									<span>
+										<a href="{{imp[0]}}">특수 문서</a>
+									</span>
+								</li>
+								{% endif %}
+								{% if imp[3][0] != ' (편집)' and
+								imp[3][1] != 0 and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}	
 								<li class="selected">
 									<span>
 										<a href="/w/{{imp[0]}}">문서</a>
 									</span>
 								</li>
+								{% elif imp[3][4] == '' and
+								imp[3][1] == 0 and
+								imp[3][0] != ' (편집)' and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}
+								<span style="display: none"></span>
 								{% else %}
 								<li>
 									<span>
@@ -106,23 +145,32 @@
 									</span>
 								</li>								
 								{% endif %}
-								{% if imp[3][0] == '(토론)' %}
+								{% if imp[3][0] == ' (토론)' or
+								imp[3][0] == ' (토론 목록)' or
+								imp[3][0] == ' (닫힌 토론)' or
+								imp[3][0] == ' (합의된 토론)' %}
 								<li class="selected">
 									<span>
-										<a href="/discuss/{{imp[0]}}">토론</a>
+										<a href="/topic/{{imp[0]}}">토론</a>
 									</span>
 								</li>
+								{% elif imp[3][4] == '' and
+								imp[3][1] == 0 and
+								imp[3][0] != ' (편집)' and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}
+								<span style="display: none"></span>
 								{% else %}
 								<li>
 									<span>
-										<a href="/discuss/{{imp[0]}}">토론</a>
-									</span>
-								</li>
-								{% endif %}
-								{% else %}
-								<li>
-									<span>
-										<a href="{{imp[0]}}">특수 문서</a>
+										<a href="/topic/{{imp[0]}}">토론</a>
 									</span>
 								</li>
 								{% endif %}
@@ -130,16 +178,39 @@
 						</div>
 					</div>
 					<div id="right-navigation">
-						{% if imp[3][4] != '' %}
+						
 						<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
 							<h3 id="p-views-label">보기</h3>
 							<ul>
-								{% if imp[3][0] == 0 %}
+								{% if imp[3][0] != ' (편집)' and
+								imp[3][1] != 0 and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}
 								<li id="ca-view" class="collapsible selected">
 									<span>
 										<a href="/w/{{imp[0]}}">읽기</a>
 									</span>
 								</li>
+								{% elif imp[3][4] == '' and
+								imp[3][1] == 0 and
+								imp[3][0] != ' (편집)' and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}
+								<span style="display: none"></span>
 								{% else %}
 								<li id="ca-view" class="collapsible">
 									<span>
@@ -147,12 +218,25 @@
 									</span>
 								</li>
 								{% endif %}
-								{% if imp[3][0] == '(편집)' %}
+								{% if imp[3][0] == ' (편집)' %}
 								<li id="ca-edit" class="collapsible selected">
 									<span>
 										<a href="/edit/{{imp[0]}}" title="이 문서 편집하기">편집</a>
 									</span>
 								</li>
+								{% elif imp[3][4] == '' and
+								imp[3][1] == 0 and
+								imp[3][0] != ' (편집)' and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}
+								<span style="display: none"></span>
 								{% else %}
 								<li id="ca-edit" class="collapsible">
 									<span>
@@ -160,12 +244,25 @@
 									</span>
 								</li>
 								{% endif %}
-								{% if imp[3][0] == '(역사)' %}
+								{% if imp[3][0] == ' (역사)' %}
 								<li id="ca-history" class="collapsible selected">
 									<span>
 										<a href="/history/{{imp[0]}}" title="이 문서의 과거 편집 내역입니다. [Alt+Shift+h]" accesskey="h">역사 보기</a>
 									</span>
 								</li>
+								{% elif imp[3][4] == '' and
+								imp[3][1] == 0 and
+								imp[3][0] != ' (편집)' and
+								imp[3][0] != ' (토론 목록)' and
+								imp[3][0] != ' (토론)' and
+								imp[3][0] != ' (닫힌 토론)' and
+								imp[3][0] != ' (합의된 토론)' and
+								imp[3][0] != ' (이동)' and
+								imp[3][0] != ' (삭제)' and
+								imp[3][0] != ' (역링크)' and
+								imp[3][0] != ' (역사)' and
+								imp[3][0] != ' (ACL)' %}
+								<span style="display: none"></span>
 								{% else %}
 								<li id="ca-history" class="collapsible">
 									<span>
@@ -209,7 +306,6 @@
 								</ul>
 							</div>
 						</div>
-						{% endif %}
 						<div id="p-search" role="search">
 							<h3>
 								<label for="searchInput">검색</label>
@@ -293,7 +389,8 @@
 					</div>
 				</div>
 				<div id="footer" role="contentinfo">
-					{% if imp[3][4] != '' %}
+					{% if imp[3][4] != '' and
+					imp[3][1] != 0 %}
 					<ul id="footer-info">
 						<li id="footer-info-lastmod">이 문서는 {{imp[3][1]}}에 마지막으로 편집되었습니다.</li>
 						<li id="footer-info-copyright">{{imp[1][1]|safe}}</li>
