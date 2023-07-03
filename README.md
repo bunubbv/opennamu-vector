@@ -1,9 +1,8 @@
-# onamuVector
-받고 Vector로 바꾸고 views에 넣으세요.
+# onamu-Vector
+**onamu-Vector** is ported version of [MediaWiki Vector Skin](https://www.mediawiki.org/wiki/Skin:Vector). (Not Vector 2022)
 
-# 수정
-<a href="https://badawiki.site">BlueWhite</a> 포크 후 기본 설계 및 수정
-CheongWol2 버그 수정 및 탭 바뀌게 변경
+# Contributors
+This skin was also contributed by users of the _MediaWiki_ and _the seed_ Vector skin. See the [Contributors](https://github.com/gravitykwon/onamu-Vector/graphs/contributors) tab for details.
 
 # License
-This skin is a fork of Vector skin, so this skin is distributed under GPL 3.0 or later. For more information, see COPYING file.
+This skin is forked from the Vector skin, so it is distributed under GPL 3.0 or later. See the COPYING file for details.
